@@ -14,9 +14,9 @@ COPY helloapp.py /app/helloapp.py
 RUN python3.7 -m pip install -r /app/requirements.txt
 
 
-RUN echo 'uvicorn helloapp:app --reload &' > /app/start.sh
-RUN echo 'nginx -g daemon off;' >> /app/start.sh
+RUN echo 'cd /app && uvicorn helloapp:app --host 0.0.0.0 &' > /app/start.sh
+RUN echo 'nginx' >> /app/start.sh
 
-EXPOSE 80 8000
+EXPOSE 80 443 8000
 STOPSIGNAL SIGTERM
-ENTRYPOINT [ "/app/start.sh" ]
+CMD [ "sh", "/app/start.sh" ]
