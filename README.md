@@ -1,6 +1,6 @@
 # fastapi-with-ssl
 
-This is to demonstrate the setup of SSL for FastAPI apps.
+This is to demonstrate the setup of SSL for FastAPI apps, both with and without container-based setup.
 
 ### Prerequisites:
 
