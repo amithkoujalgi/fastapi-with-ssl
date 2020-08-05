@@ -5,7 +5,7 @@ This is to demonstrate the setup of SSL for FastAPI apps, both with and without 
 ### Prerequisites:
 
 - Docker engine (if you want ot run the app inside a container)
-- Python 3+
+- Python 3+ (for non-container based setup)
 
 ### Non-container based setup:
 
