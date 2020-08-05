@@ -17,6 +17,6 @@ RUN python3.7 -m pip install -r /app/requirements.txt
 RUN echo 'uvicorn helloapp:app --reload &' > /app/start.sh
 RUN echo 'nginx -g daemon off;' >> /app/start.sh
 
-EXPOSE 80
+EXPOSE 80 8000
 STOPSIGNAL SIGTERM
 ENTRYPOINT [ "/app/start.sh" ]
