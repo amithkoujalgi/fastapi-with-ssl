@@ -2,10 +2,30 @@
 
 This is to demonstrate the setup of SSL for FastAPI apps.
 
-Prerequisites:
+# Prerequisites:
 
-- Docker engine
+- Docker engine (if you want ot run the app inside a container)
 - Python 3+
+
+# Non-container based setup:
+
+Install the Python libraries:
+
+```bash
+python3 -m pip install -r requirements.txt
+```
+
+Run the FastAPI app as `https`:
+
+```bash
+uvicorn helloapp:app \
+    --ssl-keyfile ./nginx-cfg/selfsigned.key \
+    --ssl-certfile ./nginx-cfg/selfsigned.crt
+```
+Head to https://localhost
+
+
+# Docker-based setup:
 
 Build:
 
@@ -20,11 +40,3 @@ Run:
 ```
 
 Head to https://localhost
-
-
-
-Run without Docker:
-
-```
-uvicorn helloapp:app --reload --ssl-keyfile ./nginx-cfg/selfsigned.key --ssl-certfile ./nginx-cfg/selfsigned.crt
-```
