@@ -9,13 +9,16 @@ RUN apt-get install -y python3-pip libpython3.7-dev
 
 RUN mkdir -p /app
 COPY requirements.txt /app/requirements.txt
-COPY helloapp.py /app/helloapp.py
-
 RUN python3.7 -m pip install -r /app/requirements.txt
 
+COPY helloapp.py /app/helloapp.py
+COPY nginx-cfg/* /app/
+COPY nginx-cfg/nginx.conf /etc/nginx/sites-available/default
 
 RUN echo 'cd /app && uvicorn helloapp:app --host 0.0.0.0 &' > /app/start.sh
 RUN echo 'nginx' >> /app/start.sh
+RUN echo 'tail -f /var/log/nginx/access.log' >> /app/start.sh
+
 
 EXPOSE 80 443 8000
 STOPSIGNAL SIGTERM
