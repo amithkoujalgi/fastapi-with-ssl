@@ -20,3 +20,11 @@ Run:
 ```
 
 Head to https://localhost
+
+
+
+Run without Docker:
+
+```
+uvicorn helloapp:app --reload --ssl-keyfile ./nginx-cfg/selfsigned.key --ssl-certfile ./nginx-cfg/selfsigned.crt
+```
